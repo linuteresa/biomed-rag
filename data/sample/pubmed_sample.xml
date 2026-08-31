@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SYNTHETIC TEST FIXTURE — NOT REAL CITATIONS.
+  These records are fabricated for offline pipeline testing only. PMIDs are in a
+  clearly-synthetic 9000000x range and must not be treated as real PubMed IDs or
+  cited as real science. Replace with live efetch output for real use.
+-->
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">90000001</PMID>
+      <Article PubModel="Print">
+        <Journal>
+          <ISOAbbreviation>J Synth Immunol</ISOAbbreviation>
+          <Title>Journal of Synthetic Immunology</Title>
+          <JournalIssue>
+            <PubDate><Year>2021</Year><Month>Mar</Month></PubDate>
+          </JournalIssue>
+        </Journal>
+        <ArticleTitle>Interleukin-6 signaling and macrophage polarization in chronic inflammation.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Chronic inflammation is driven in part by cytokine signaling that reprograms tissue-resident macrophages.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">We profiled macrophage phenotypes under sustained IL-6 exposure using single-cell RNA sequencing in a synthetic dataset.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Sustained IL-6 shifted macrophages toward an M2-like state with elevated STAT3 activity.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">IL-6/STAT3 signaling is a candidate axis for modulating macrophage polarization in chronic inflammatory disease.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Nakamura</LastName><ForeName>Hana</ForeName><Initials>H</Initials></Author>
+          <Author><LastName>Okafor</LastName><ForeName>Chidi</ForeName><Initials>C</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Interleukin-6</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Macrophages</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Inflammation</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">STAT3 Transcription Factor</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">cytokine signaling</Keyword>
+        <Keyword MajorTopicYN="N">M2 polarization</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">90000001</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2021.0001</ArticleId>
+        <ArticleId IdType="pmc">PMC9000001</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">90000002</PMID>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth Oncol Lett</ISOAbbreviation>
+          <Title>Synthetic Oncology Letters</Title>
+          <JournalIssue>
+            <PubDate><Year>2019</Year></PubDate>
+          </JournalIssue>
+        </Journal>
+        <ArticleTitle>EGFR tyrosine kinase inhibitor resistance mechanisms in non-small cell lung cancer.</ArticleTitle>
+        <Abstract>
+          <AbstractText>Acquired resistance to EGFR tyrosine kinase inhibitors limits durable response in non-small cell lung cancer. This synthetic review summarizes T790M gatekeeper mutations, MET amplification, and histologic transformation as convergent resistance routes, and outlines combination strategies under investigation.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Silva</LastName><ForeName>Marina</ForeName><Initials>M</Initials></Author>
+          <Author><CollectiveName>Synthetic Lung Cancer Consortium</CollectiveName></Author>
+        </AuthorList>
+        <ELocationID EIdType="doi" ValidYN="Y">10.9999/synth.2019.0142</ELocationID>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Carcinoma, Non-Small-Cell Lung</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">ErbB Receptors</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Drug Resistance, Neoplasm</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Protein Kinase Inhibitors</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">90000002</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">90000003</PMID>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Cardiol</ISOAbbreviation>
+          <Title>Synthetic Journal of Cardiology</Title>
+          <JournalIssue>
+            <PubDate><MedlineDate>2020 Dec-2021 Jan</MedlineDate></PubDate>
+          </JournalIssue>
+        </Journal>
+        <ArticleTitle>SGLT2 inhibitors and heart failure outcomes: a synthetic meta-analysis.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="AIMS" NlmCategory="OBJECTIVE">To evaluate the effect of SGLT2 inhibitors on hospitalization for heart failure in a fabricated pooled cohort.</AbstractText>
+          <AbstractText Label="METHODS AND RESULTS" NlmCategory="METHODS">Across synthetic trials (n=12,000 simulated participants), SGLT2 inhibitors reduced heart-failure hospitalization by a relative 28% (simulated 95% CI 0.66-0.79). Benefit was consistent regardless of baseline diabetes status.</AbstractText>
+          <AbstractText Label="CONCLUSION" NlmCategory="CONCLUSIONS">In this synthetic analysis, SGLT2 inhibition was associated with reduced heart-failure hospitalization.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Brandt</LastName><ForeName>Lena</ForeName><Initials>L</Initials></Author>
+          <Author><LastName>Osei</LastName><ForeName>Kwame</ForeName><Initials>K</Initials></Author>
+          <Author><LastName>Yamada</LastName><ForeName>Rin</ForeName><Initials>R</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Sodium-Glucose Transporter 2 Inhibitors</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Heart Failure</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Hospitalization</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">SGLT2</Keyword>
+        <Keyword MajorTopicYN="N">cardiovascular outcomes</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">90000003</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2020.0333</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">90000004</PMID>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth Neurosci Rep</ISOAbbreviation>
+          <Title>Synthetic Neuroscience Reports</Title>
+          <JournalIssue>
+            <PubDate><Year>2022</Year><Month>Jul</Month></PubDate>
+          </JournalIssue>
+        </Journal>
+        <ArticleTitle>Amyloid-beta clearance via the glymphatic system during sleep.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">The glymphatic system is hypothesized to clear metabolic waste, including amyloid-beta, from the brain during sleep.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">In a synthetic murine model, slow-wave sleep increased simulated amyloid-beta clearance by 45% relative to wakefulness, mediated by AQP4 water channels.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">These fabricated results support a link between sleep architecture and amyloid clearance relevant to neurodegeneration.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Feldman</LastName><ForeName>Sara</ForeName><Initials>S</Initials></Author>
+          <Author><LastName>Petrov</LastName><ForeName>Ivan</ForeName><Initials>I</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Amyloid beta-Peptides</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Glymphatic System</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Sleep</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Aquaporin 4</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">glymphatic</Keyword>
+        <Keyword MajorTopicYN="N">neurodegeneration</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">90000004</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2022.0777</ArticleId>
+        <ArticleId IdType="pmc">PMC9000004</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

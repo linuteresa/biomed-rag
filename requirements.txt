@@ -1,0 +1,23 @@
+# --- Core orchestration ---
+llama-index-core>=0.11.0
+llama-index-vector-stores-pinecone>=0.2.0
+llama-index-embeddings-huggingface>=0.3.0
+
+# --- Vector store + hybrid search ---
+pinecone>=5.0.0          # Pinecone SDK (v5+, `from pinecone import Pinecone`)
+pinecone-text>=0.9.0     # BM25 sparse encoder for hybrid (sparse-dense) search
+
+# --- Embeddings / models (dense retrieval; fine-tuning comes in a later component) ---
+sentence-transformers>=3.0.0
+torch>=2.2.0
+transformers>=4.44.0
+
+# --- Re-ranking (cross-encoder; wired as a hook in retrieve.py) ---
+# sentence-transformers already provides CrossEncoder
+
+# --- Utilities ---
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+
+# --- Dev / test ---
+pytest>=8.0.0

@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SYNTHETIC EVALUATION CORPUS — NOT REAL CITATIONS.
+  24 fabricated PubMed records for the retrieval / generation eval harness
+  (biomed_rag/eval, biomed_rag/generate). PMIDs are in a clearly-synthetic
+  9100000x range and must not be treated as real PubMed IDs or cited as real
+  science. Records fall into deliberately overlapping topic clusters
+  (macrophage/cytokine: 1,15,17,18; checkpoint/lung: 7,19,20; amyloid/neuro:
+  3,6,9,21; antibody/vaccine: 10,14,22; incretin/SGLT2 weight: 2,8,23,24) so
+  that near-duplicate distractors make retrieval, ranking, and re-ranking
+  non-trivial. Replace with live efetch output for real use.
+-->
+<PubmedArticleSet>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000001</PMID>
+      <Article PubModel="Print">
+        <Journal>
+          <ISOAbbreviation>Synth J Immunol</ISOAbbreviation>
+          <Title>Synthetic Journal of Immunology</Title>
+          <JournalIssue><PubDate><Year>2021</Year><Month>Mar</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Interleukin-6 drives M2-like macrophage polarization through STAT3 in chronic inflammation.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Tissue-resident macrophages adopt distinct activation states in response to sustained cytokine signaling during chronic inflammation.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">In a synthetic single-cell RNA sequencing dataset, bone-marrow-derived macrophages were exposed to prolonged IL-6 with and without a STAT3 inhibitor.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Prolonged IL-6 exposure shifted macrophages toward an M2-like phenotype with elevated phospho-STAT3, CD206, and arginase-1; STAT3 blockade abolished the shift.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">The IL-6/STAT3 axis is a candidate target for re-programming macrophage polarization in chronic inflammatory disease.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Nakamura</LastName><ForeName>Hana</ForeName><Initials>H</Initials></Author>
+          <Author><LastName>Okafor</LastName><ForeName>Chidi</ForeName><Initials>C</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Interleukin-6</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Macrophage Activation</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">STAT3 Transcription Factor</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Inflammation</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">M2 polarization</Keyword>
+        <Keyword MajorTopicYN="N">cytokine signaling</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000001</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2021.1001</ArticleId>
+        <ArticleId IdType="pmc">PMC9100001</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000002</PMID>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Cardiol</ISOAbbreviation>
+          <Title>Synthetic Journal of Cardiology</Title>
+          <JournalIssue><PubDate><MedlineDate>2020 Dec-2021 Jan</MedlineDate></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>SGLT2 inhibitors and hospitalization for heart failure: a synthetic pooled analysis.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="AIMS" NlmCategory="OBJECTIVE">To estimate the effect of SGLT2 inhibitors (gliflozins) on hospitalization for heart failure in a fabricated pooled cohort.</AbstractText>
+          <AbstractText Label="METHODS AND RESULTS" NlmCategory="RESULTS">Across synthetic trials (n=14,000 simulated participants), SGLT2 inhibitors reduced heart-failure hospitalization by a relative 27% (simulated hazard ratio 0.73, 95% CI 0.66-0.81). The benefit was consistent regardless of baseline type 2 diabetes status and appeared within the first 30 days.</AbstractText>
+          <AbstractText Label="CONCLUSION" NlmCategory="CONCLUSIONS">In this synthetic analysis, SGLT2 inhibition was associated with fewer heart-failure hospital admissions.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Brandt</LastName><ForeName>Lena</ForeName><Initials>L</Initials></Author>
+          <Author><LastName>Osei</LastName><ForeName>Kwame</ForeName><Initials>K</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Sodium-Glucose Transporter 2 Inhibitors</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Heart Failure</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Hospitalization</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">SGLT2</Keyword>
+        <Keyword MajorTopicYN="N">cardiovascular outcomes</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000002</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2020.1002</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000003</PMID>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth Neurosci Rep</ISOAbbreviation>
+          <Title>Synthetic Neuroscience Reports</Title>
+          <JournalIssue><PubDate><Year>2022</Year><Month>Jul</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Slow-wave sleep enhances glymphatic amyloid-beta clearance via AQP4 water channels.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">The glymphatic system is proposed to clear interstitial solutes, including amyloid-beta, from the brain, with activity gated by sleep state.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">In a synthetic murine model, slow-wave sleep increased simulated amyloid-beta clearance by 46% relative to wakefulness; aquaporin-4 (AQP4) deletion abolished most of the effect.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">These fabricated data link sleep architecture to perivascular amyloid clearance relevant to neurodegeneration.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Feldman</LastName><ForeName>Sara</ForeName><Initials>S</Initials></Author>
+          <Author><LastName>Petrov</LastName><ForeName>Ivan</ForeName><Initials>I</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Glymphatic System</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Amyloid beta-Peptides</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Aquaporin 4</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Sleep, Slow-Wave</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">glymphatic</Keyword>
+        <Keyword MajorTopicYN="N">neurodegeneration</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000003</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2022.1003</ArticleId>
+        <ArticleId IdType="pmc">PMC9100003</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000004</PMID>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Gene Ther</ISOAbbreviation>
+          <Title>Synthetic Journal of Gene Therapy</Title>
+          <JournalIssue><PubDate><Year>2023</Year><Month>Feb</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Adenine base editing corrects the sickle-cell mutation in synthetic hematopoietic stem cells.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Sickle cell disease is caused by a single A-to-T transversion in HBB producing hemoglobin S (HbS).</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">A synthetic adenine base editor (ABE) with a sickle-targeting guide RNA was delivered to simulated CD34+ hematopoietic stem and progenitor cells.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Base editing converted the pathogenic codon to a benign Makassar variant in 68% of simulated alleles, raising fetal-like hemoglobin and reducing in-silico sickling under hypoxia, with no detected off-target edits at the top nominated sites.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">CRISPR-derived base editing is a plausible one-time approach for hemoglobinopathies in this fabricated model.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Ahmadi</LastName><ForeName>Reza</ForeName><Initials>R</Initials></Author>
+          <Author><LastName>Whitfield</LastName><ForeName>Grace</ForeName><Initials>G</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Gene Editing</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Anemia, Sickle Cell</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">CRISPR-Cas Systems</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Hematopoietic Stem Cells</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">base editing</Keyword>
+        <Keyword MajorTopicYN="N">hemoglobinopathy</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000004</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2023.1004</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000005</PMID>
+      <Article PubModel="Print">
+        <Journal>
+          <ISOAbbreviation>Synth Gut Microbiome J</ISOAbbreviation>
+          <Title>Synthetic Gut Microbiome Journal</Title>
+          <JournalIssue><PubDate><Year>2019</Year></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Microbiota-derived short-chain fatty acids expand colonic regulatory T cells.</ArticleTitle>
+        <Abstract>
+          <AbstractText>Commensal bacteria ferment dietary fiber into short-chain fatty acids (SCFAs) such as butyrate, propionate, and acetate. In this synthetic study, gnotobiotic mice colonized with a butyrate-producing consortium showed a simulated 2.3-fold increase in colonic Foxp3+ regulatory T cells (Tregs), dependent on GPR43 signaling and histone deacetylase inhibition. Antibiotic depletion of the microbiota reversed the effect and worsened fabricated colitis scores. The data support a diet-microbiome-immune axis in which SCFAs promote intestinal immune tolerance.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Delgado</LastName><ForeName>Paula</ForeName><Initials>P</Initials></Author>
+          <Author><CollectiveName>Synthetic Mucosal Immunology Group</CollectiveName></Author>
+        </AuthorList>
+        <ELocationID EIdType="doi" ValidYN="Y">10.9999/synth.2019.1005</ELocationID>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Fatty Acids, Volatile</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">T-Lymphocytes, Regulatory</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Gastrointestinal Microbiome</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Butyrates</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">butyrate</Keyword>
+        <Keyword MajorTopicYN="N">immune tolerance</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000005</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000006</PMID>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Neuroimaging</ISOAbbreviation>
+          <Title>Synthetic Journal of Neuroimaging</Title>
+          <JournalIssue><PubDate><Year>2021</Year><Month>Nov</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Tau PET signal tracks Braak stage and predicts cognitive decline in synthetic cohorts.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="OBJECTIVE" NlmCategory="OBJECTIVE">To relate flortaucipir tau-PET uptake to neuropathological Braak staging and prospective cognition in a fabricated aging cohort.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">Simulated participants (n=420) underwent tau-PET and 3-year cognitive follow-up; standardized uptake value ratios were computed in Braak-stage regions of interest.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Entorhinal and temporal tau-PET signal increased monotonically with simulated Braak stage and predicted a synthetic 2.1-point annual drop in a composite cognitive score, outperforming amyloid-PET for near-term decline.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">Tau-PET is a staging and prognostic marker in this fabricated dataset.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Larsson</LastName><ForeName>Erik</ForeName><Initials>E</Initials></Author>
+          <Author><LastName>Ibrahim</LastName><ForeName>Noor</ForeName><Initials>N</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">tau Proteins</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Positron-Emission Tomography</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Alzheimer Disease</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Cognitive Dysfunction</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">flortaucipir</Keyword>
+        <Keyword MajorTopicYN="N">Braak staging</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000006</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2021.1006</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000007</PMID>
+      <Article PubModel="Print">
+        <Journal>
+          <ISOAbbreviation>Synth Oncol Lett</ISOAbbreviation>
+          <Title>Synthetic Oncology Letters</Title>
+          <JournalIssue><PubDate><Year>2018</Year><Month>Sep</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>First-line pembrolizumab in PD-L1-high metastatic non-small cell lung cancer: a synthetic trial.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">PD-1 blockade with pembrolizumab is used in non-small cell lung cancer (NSCLC) selected by PD-L1 tumor proportion score (TPS).</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">In this fabricated randomized trial, 300 simulated patients with TPS >= 50% and no EGFR/ALK alteration received pembrolizumab or platinum chemotherapy.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Simulated median overall survival was 26 versus 14 months (hazard ratio 0.60) favoring pembrolizumab, with fewer grade 3-4 adverse events; immune-related thyroiditis occurred in 9%.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">Checkpoint blockade improved synthetic survival in PD-L1-high NSCLC.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Romano</LastName><ForeName>Giulia</ForeName><Initials>G</Initials></Author>
+          <Author><LastName>Park</LastName><ForeName>Jisoo</ForeName><Initials>J</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Carcinoma, Non-Small-Cell Lung</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Immune Checkpoint Inhibitors</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">B7-H1 Antigen</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Programmed Cell Death 1 Receptor</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">pembrolizumab</Keyword>
+        <Keyword MajorTopicYN="N">PD-L1</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000007</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2018.1007</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000008</PMID>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Endocrinol Metab</ISOAbbreviation>
+          <Title>Synthetic Journal of Endocrinology and Metabolism</Title>
+          <JournalIssue><PubDate><Year>2022</Year><Month>May</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Once-weekly semaglutide, a GLP-1 receptor agonist, for weight loss in synthetic obesity.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Glucagon-like peptide-1 (GLP-1) receptor agonists reduce appetite and body weight.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">In a fabricated 68-week trial, 900 simulated adults with BMI >= 30 and without diabetes received subcutaneous semaglutide 2.4 mg weekly or placebo plus lifestyle counseling.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Simulated mean body-weight change was -14.8% with semaglutide versus -2.4% with placebo; waist circumference and CRP fell, and nausea was the most common adverse event.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">GLP-1 receptor agonism produced clinically meaningful synthetic weight loss.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Haddad</LastName><ForeName>Yara</ForeName><Initials>Y</Initials></Author>
+          <Author><LastName>Sorensen</LastName><ForeName>Mikkel</ForeName><Initials>M</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Glucagon-Like Peptide-1 Receptor</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Weight Loss</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Obesity</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Hypoglycemic Agents</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">semaglutide</Keyword>
+        <Keyword MajorTopicYN="N">GLP-1</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000008</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2022.1008</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000009</PMID>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Cell Death</ISOAbbreviation>
+          <Title>Synthetic Journal of Cell Death</Title>
+          <JournalIssue><PubDate><Year>2020</Year></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>GPX4 loss triggers ferroptosis in dopaminergic neurons through lipid peroxidation.</ArticleTitle>
+        <Abstract>
+          <AbstractText>Ferroptosis is an iron-dependent form of regulated cell death driven by unchecked phospholipid peroxidation. In this synthetic study, conditional deletion of glutathione peroxidase 4 (GPX4) in simulated midbrain cultures caused rapid accumulation of oxidized phosphatidylethanolamine species and death of tyrosine-hydroxylase-positive dopaminergic neurons. The lipophilic antioxidant ferrostatin-1 and iron chelation rescued simulated viability, whereas pan-caspase inhibition did not. Markers of ferroptosis were elevated in a fabricated Parkinson disease tissue panel, implicating this pathway in nigral degeneration.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Voss</LastName><ForeName>Anke</ForeName><Initials>A</Initials></Author>
+          <Author><LastName>Mbeki</LastName><ForeName>Thabo</ForeName><Initials>T</Initials></Author>
+        </AuthorList>
+        <ELocationID EIdType="doi" ValidYN="Y">10.9999/synth.2020.1009</ELocationID>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Ferroptosis</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Dopaminergic Neurons</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Lipid Peroxidation</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Phospholipid Hydroperoxide Glutathione Peroxidase</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">GPX4</Keyword>
+        <Keyword MajorTopicYN="N">Parkinson disease</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000009</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000010</PMID>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth Vaccine J</ISOAbbreviation>
+          <Title>Synthetic Vaccine Journal</Title>
+          <JournalIssue><PubDate><Year>2022</Year><Month>Jan</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Durability of neutralizing antibodies after an mRNA lipid nanoparticle vaccine booster.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">mRNA vaccines formulated in lipid nanoparticles (LNP) elicit neutralizing antibodies whose durability informs booster timing.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">In a fabricated cohort of 600 simulated adults, live-virus neutralization titers were tracked for 9 months after a third (booster) dose.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Simulated titers rose 12-fold at 1 month then decayed with a modeled half-life of 68 days, plateauing near four times the pre-booster level; memory B cells remained stable, and a fabricated variant escaped roughly half of the neutralizing activity.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">Booster-induced humoral immunity wanes but leaves a durable synthetic floor.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Nguyen</LastName><ForeName>Thi</ForeName><Initials>T</Initials></Author>
+          <Author><LastName>Fischer</LastName><ForeName>Jonas</ForeName><Initials>J</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">mRNA Vaccines</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Antibodies, Neutralizing</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Immunization, Secondary</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Nanoparticles</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">booster</Keyword>
+        <Keyword MajorTopicYN="N">antibody durability</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000010</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2022.1010</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000011</PMID>
+      <Article PubModel="Print">
+        <Journal>
+          <ISOAbbreviation>Synth Tumor Biol</ISOAbbreviation>
+          <Title>Synthetic Tumor Biology</Title>
+          <JournalIssue><PubDate><Year>2017</Year></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Hypoxia stabilizes HIF-1alpha to drive angiogenesis in the tumor microenvironment.</ArticleTitle>
+        <Abstract>
+          <AbstractText>Regions of low oxygen tension are a hallmark of solid tumors. In this synthetic analysis of simulated tumor spheroids, hypoxia below 1% O2 stabilized hypoxia-inducible factor 1-alpha (HIF-1alpha), which transactivated VEGFA, GLUT1, and CA9. Simulated knockdown of HIF-1alpha reduced fabricated microvessel density by 40% and slowed spheroid growth, while a prolyl-hydroxylase inhibitor mimicking hypoxia had the opposite effect. The results position HIF-1alpha as the central hub coupling tumor hypoxia to angiogenic signaling.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Costa</LastName><ForeName>Rafael</ForeName><Initials>R</Initials></Author>
+          <Author><LastName>Andersen</LastName><ForeName>Freja</ForeName><Initials>F</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Hypoxia-Inducible Factor 1, alpha Subunit</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Neovascularization, Pathologic</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Tumor Microenvironment</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Vascular Endothelial Growth Factor A</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">hypoxia</Keyword>
+        <Keyword MajorTopicYN="N">angiogenesis</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000011</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2017.1011</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000012</PMID>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Antimicrob Chemother</ISOAbbreviation>
+          <Title>Synthetic Journal of Antimicrobial Chemotherapy</Title>
+          <JournalIssue><PubDate><Year>2019</Year><Month>Aug</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Carbapenem-resistant Klebsiella pneumoniae carrying KPC: synthetic surveillance and colistin susceptibility.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="OBJECTIVES" NlmCategory="OBJECTIVE">To characterize carbapenem resistance mechanisms and salvage-therapy susceptibility in a fabricated Klebsiella pneumoniae collection.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">Simulated whole-genome sequencing and broth microdilution were performed on 240 synthetic bloodstream isolates.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">KPC-type carbapenemase accounted for 71% of simulated resistance, followed by NDM at 18%; colistin non-susceptibility from mgrB disruption was present in 22% of KPC isolates, and ceftazidime-avibactam retained fabricated activity against 88%.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">KPC dominates in this synthetic setting and colistin resistance is emerging.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Kowalski</LastName><ForeName>Piotr</ForeName><Initials>P</Initials></Author>
+          <Author><LastName>Reyes</LastName><ForeName>Camila</ForeName><Initials>C</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Klebsiella pneumoniae</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Carbapenem-Resistant Enterobacteriaceae</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">beta-Lactamases</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Colistin</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">KPC</Keyword>
+        <Keyword MajorTopicYN="N">antimicrobial resistance</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000012</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2019.1012</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000013</PMID>
+      <Article PubModel="Print">
+        <Journal>
+          <ISOAbbreviation>Synth J Exerc Neurosci</ISOAbbreviation>
+          <Title>Synthetic Journal of Exercise Neuroscience</Title>
+          <JournalIssue><PubDate><Year>2021</Year></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Aerobic exercise raises BDNF and promotes hippocampal neurogenesis and memory.</ArticleTitle>
+        <Abstract>
+          <AbstractText>Physical activity is linked to cognitive resilience. In this synthetic rodent study, eight weeks of voluntary wheel running increased simulated hippocampal brain-derived neurotrophic factor (BDNF) protein by 60% and doubled the number of doublecortin-positive newborn neurons in the dentate gyrus. Running mice showed improved fabricated performance on a spatial memory task, and blocking TrkB signaling abolished both the neurogenic and cognitive benefits. The data support BDNF-dependent neurogenesis as a mediator of exercise effects on memory.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Ito</LastName><ForeName>Kenji</ForeName><Initials>K</Initials></Author>
+          <Author><LastName>Novak</LastName><ForeName>Petra</ForeName><Initials>P</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Brain-Derived Neurotrophic Factor</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Neurogenesis</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Hippocampus</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Physical Conditioning, Animal</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">BDNF</Keyword>
+        <Keyword MajorTopicYN="N">exercise</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000013</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2021.1013</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000014</PMID>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Virol</ISOAbbreviation>
+          <Title>Synthetic Journal of Virology</Title>
+          <JournalIssue><PubDate><Year>2021</Year><Month>Apr</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>A neutralizing monoclonal antibody targeting the SARS-CoV-2 spike receptor-binding domain.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">The SARS-CoV-2 spike glycoprotein engages ACE2 through its receptor-binding domain (RBD), a primary target for neutralizing antibodies.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">A synthetic memory-B-cell repertoire was mined to isolate an RBD-directed monoclonal antibody, and its activity was assessed in fabricated pseudovirus and hamster models.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">The antibody blocked simulated ACE2 binding with a 5 ng/mL IC50, reduced fabricated lung viral load by 3 logs when given prophylactically, and retained partial activity against a simulated escape variant carrying an E484 substitution.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">RBD-targeted monoclonals are potent in this synthetic model but vulnerable to spike evolution.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Alonso</LastName><ForeName>Diego</ForeName><Initials>D</Initials></Author>
+          <Author><LastName>Chen</LastName><ForeName>Wei</ForeName><Initials>W</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Spike Glycoprotein, Coronavirus</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Antibodies, Monoclonal</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Angiotensin-Converting Enzyme 2</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Antibodies, Neutralizing</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">RBD</Keyword>
+        <Keyword MajorTopicYN="N">SARS-CoV-2</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000014</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2021.1014</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000015</PMID>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Immunol</ISOAbbreviation>
+          <Title>Synthetic Journal of Immunology</Title>
+          <JournalIssue><PubDate><Year>2020</Year><Month>Oct</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Low-dose IL-2 expands FOXP3+ regulatory T cells in synthetic autoimmune disease.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Regulatory T cells (Tregs) defined by FOXP3 expression restrain autoimmunity, and the IL-2 receptor pathway is central to their survival.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">In a fabricated model of systemic autoimmunity, mice received low-dose recombinant IL-2 or vehicle for six weeks.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Low-dose IL-2 selectively increased simulated peripheral FOXP3+ Treg frequency 1.9-fold, raised CD25 and CTLA-4, lowered fabricated autoantibody titers, and reduced glomerular immune-complex deposition without expanding effector T cells.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">Cytokine-directed Treg expansion is a plausible tolerance-restoring strategy in this synthetic setting.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Bauer</LastName><ForeName>Lena</ForeName><Initials>L</Initials></Author>
+          <Author><LastName>Qasimi</LastName><ForeName>Omar</ForeName><Initials>O</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">T-Lymphocytes, Regulatory</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Interleukin-2</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Forkhead Transcription Factors</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Autoimmunity</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">FOXP3</Keyword>
+        <Keyword MajorTopicYN="N">immune tolerance</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000015</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2020.1015</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000016</PMID>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Med AI</ISOAbbreviation>
+          <Title>Synthetic Journal of Medical AI</Title>
+          <JournalIssue><PubDate><Year>2019</Year><Month>Jun</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>A convolutional neural network for diabetic retinopathy screening from fundus photographs.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Automated grading of retinal images could extend diabetic retinopathy screening.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">A convolutional neural network was trained on a synthetic set of 120,000 labeled fundus photographs and evaluated on a held-out fabricated test set against a reference-standard panel.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">The model reached a simulated area under the ROC curve of 0.97 for referable retinopathy, with 92% sensitivity and 94% specificity; performance dropped on fabricated images from an unseen camera type.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">Deep learning approaches synthetic ophthalmologist agreement but need external validation.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Menon</LastName><ForeName>Arjun</ForeName><Initials>A</Initials></Author>
+          <Author><LastName>Svensson</LastName><ForeName>Elin</ForeName><Initials>E</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Diabetic Retinopathy</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Deep Learning</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Diagnostic Techniques, Ophthalmological</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Image Interpretation, Computer-Assisted</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">fundus photography</Keyword>
+        <Keyword MajorTopicYN="N">screening</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">91000016</ArticleId>
+        <ArticleId IdType="doi">10.9999/synth.2019.1016</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000017</PMID>
+      <Article PubModel="Print">
+        <Journal>
+          <ISOAbbreviation>Synth J Fibrosis</ISOAbbreviation>
+          <Title>Synthetic Journal of Fibrosis</Title>
+          <JournalIssue><PubDate><Year>2020</Year></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>TGF-beta1 promotes profibrotic M2 macrophage polarization in synthetic lung injury.</ArticleTitle>
+        <Abstract>
+          <AbstractText>Alternatively activated (M2) macrophages contribute to tissue fibrosis. In this fabricated bleomycin lung-injury model, transforming growth factor beta 1 (TGF-beta1) drove a simulated 3-fold rise in CD206+ Arg1+ M2 macrophages through SMAD3, independent of STAT3. Macrophage-specific SMAD3 deletion halved synthetic collagen deposition. The work separates a TGF-beta/SMAD3 route to M2 polarization from the classical IL-4 and IL-6 routes.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Iqbal</LastName><ForeName>Sana</ForeName><Initials>S</Initials></Author>
+          <Author><LastName>Moreau</LastName><ForeName>Luc</ForeName><Initials>L</Initials></Author>
+        </AuthorList>
+        <ELocationID EIdType="doi" ValidYN="Y">10.9999/synth.2020.1017</ELocationID>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Transforming Growth Factor beta1</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Macrophage Activation</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Pulmonary Fibrosis</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Smad3 Protein</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">M2 polarization</Keyword>
+        <Keyword MajorTopicYN="N">fibrosis</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData><ArticleIdList><ArticleId IdType="pubmed">91000017</ArticleId></ArticleIdList></PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000018</PMID>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Immunol</ISOAbbreviation>
+          <Title>Synthetic Journal of Immunology</Title>
+          <JournalIssue><PubDate><Year>2019</Year><Month>Feb</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>IL-4 and IL-13 signal through STAT6 to establish the M2 macrophage program.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Type 2 cytokines are the canonical inducers of alternative macrophage activation.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">In synthetic bone-marrow macrophage cultures, IL-4 and IL-13 each induced a simulated STAT6-dependent M2 signature (Ym1, Fizz1, CD206); STAT6 knockout abolished it, whereas STAT3 knockout did not. IL-6 alone produced only a weak fabricated M2 shift.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">STAT6 is the dominant transcription factor for type-2-cytokine-driven M2 polarization in this model.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Weiss</LastName><ForeName>Karin</ForeName><Initials>K</Initials></Author>
+          <Author><LastName>Tan</LastName><ForeName>Boon</ForeName><Initials>B</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Interleukin-4</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">STAT6 Transcription Factor</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Macrophages</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Interleukin-13</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">M2 polarization</Keyword>
+        <Keyword MajorTopicYN="N">STAT6</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData><ArticleIdList><ArticleId IdType="pubmed">91000018</ArticleId><ArticleId IdType="doi">10.9999/synth.2019.1018</ArticleId></ArticleIdList></PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000019</PMID>
+      <Article PubModel="Print">
+        <Journal>
+          <ISOAbbreviation>Synth Oncol Lett</ISOAbbreviation>
+          <Title>Synthetic Oncology Letters</Title>
+          <JournalIssue><PubDate><Year>2019</Year></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Nivolumab for advanced melanoma after progression: a synthetic cohort.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Anti-PD-1 therapy with nivolumab is active in cutaneous melanoma.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Among 260 simulated patients with BRAF-wildtype melanoma, nivolumab produced a fabricated objective response in 38% and a simulated 3-year survival of 52%; vitiligo-like depigmentation correlated with response. Prior ipilimumab did not reduce synthetic benefit.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">PD-1 blockade is effective in this synthetic melanoma population.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Fontaine</LastName><ForeName>Marie</ForeName><Initials>M</Initials></Author>
+          <Author><LastName>Berg</LastName><ForeName>Anders</ForeName><Initials>A</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Melanoma</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Immune Checkpoint Inhibitors</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Programmed Cell Death 1 Receptor</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">nivolumab</Keyword>
+        <Keyword MajorTopicYN="N">melanoma</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData><ArticleIdList><ArticleId IdType="pubmed">91000019</ArticleId><ArticleId IdType="doi">10.9999/synth.2019.1019</ArticleId></ArticleIdList></PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000020</PMID>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth Oncol Lett</ISOAbbreviation>
+          <Title>Synthetic Oncology Letters</Title>
+          <JournalIssue><PubDate><Year>2020</Year><Month>Jan</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Osimertinib versus first-generation EGFR inhibitors in synthetic EGFR-mutant lung cancer.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Third-generation EGFR tyrosine kinase inhibitors target the T790M resistance mutation in non-small cell lung cancer.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">In a fabricated trial of 340 simulated patients with EGFR exon-19 deletion or L858R, osimertinib extended simulated progression-free survival to 19 months versus 10 months and reduced CNS progression; this is a targeted-kinase effect and involved no immune checkpoint pathway.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">Osimertinib is the preferred synthetic first-line option for EGFR-mutant disease.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Hassan</LastName><ForeName>Layla</ForeName><Initials>L</Initials></Author>
+          <Author><LastName>Grant</LastName><ForeName>Owen</ForeName><Initials>O</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Carcinoma, Non-Small-Cell Lung</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">ErbB Receptors</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Protein Kinase Inhibitors</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Drug Resistance, Neoplasm</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">osimertinib</Keyword>
+        <Keyword MajorTopicYN="N">EGFR</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData><ArticleIdList><ArticleId IdType="pubmed">91000020</ArticleId><ArticleId IdType="doi">10.9999/synth.2020.1020</ArticleId></ArticleIdList></PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000021</PMID>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Neurol</ISOAbbreviation>
+          <Title>Synthetic Journal of Neurology</Title>
+          <JournalIssue><PubDate><Year>2023</Year><Month>Jan</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>An anti-amyloid monoclonal antibody clears plaques and slows synthetic cognitive decline.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Monoclonal antibodies against aggregated amyloid-beta can remove plaque from the Alzheimer brain.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">In a fabricated 18-month trial, 1,100 simulated participants with early Alzheimer disease received a synthetic anti-amyloid antibody or placebo by monthly infusion.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Amyloid-PET load fell by a simulated 62 centiloids and the clinical decline slowed by 26%; amyloid-related imaging abnormalities (ARIA-E) occurred in 12%. Clearance here is antibody-mediated phagocytosis, not a sleep- or glymphatic-dependent process.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">Passive immunotherapy modifies synthetic disease course with a manageable ARIA risk.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Underwood</LastName><ForeName>Beth</ForeName><Initials>B</Initials></Author>
+          <Author><LastName>Kato</LastName><ForeName>Sho</ForeName><Initials>S</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Alzheimer Disease</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Antibodies, Monoclonal</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Amyloid beta-Peptides</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Immunotherapy</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">anti-amyloid</Keyword>
+        <Keyword MajorTopicYN="N">plaque clearance</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData><ArticleIdList><ArticleId IdType="pubmed">91000021</ArticleId><ArticleId IdType="doi">10.9999/synth.2023.1021</ArticleId></ArticleIdList></PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000022</PMID>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth Vaccine J</ISOAbbreviation>
+          <Title>Synthetic Vaccine Journal</Title>
+          <JournalIssue><PubDate><Year>2022</Year><Month>Mar</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Spike-specific CD8 T-cell memory persists when synthetic antibody titers wane.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Cellular immunity may protect against severe disease after neutralizing antibodies decline.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">In a fabricated cohort followed 12 months post-vaccination, simulated spike-specific CD8 T cells contracted only 1.4-fold and retained polyfunctional IFN-gamma/TNF responses against a simulated variant, while neutralizing titers dropped 8-fold. T-cell breadth did not correlate with antibody level.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">T-cell memory is more durable than the humoral response in this synthetic dataset.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Ferreira</LastName><ForeName>Bruno</ForeName><Initials>B</Initials></Author>
+          <Author><LastName>Oduya</LastName><ForeName>Achieng</ForeName><Initials>A</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">CD8-Positive T-Lymphocytes</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Immunologic Memory</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">COVID-19 Vaccines</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Spike Glycoprotein, Coronavirus</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">T-cell immunity</Keyword>
+        <Keyword MajorTopicYN="N">vaccine</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData><ArticleIdList><ArticleId IdType="pubmed">91000022</ArticleId><ArticleId IdType="doi">10.9999/synth.2022.1022</ArticleId></ArticleIdList></PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000023</PMID>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Endocrinol Metab</ISOAbbreviation>
+          <Title>Synthetic Journal of Endocrinology and Metabolism</Title>
+          <JournalIssue><PubDate><Year>2023</Year><Month>Apr</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>Tirzepatide, a dual GIP/GLP-1 receptor agonist, for synthetic weight reduction.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Combining GIP and GLP-1 receptor agonism may exceed GLP-1 alone for body-weight lowering.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">In a fabricated 72-week trial, 1,050 simulated adults with obesity and no diabetes received weekly tirzepatide (up to 15 mg) or placebo.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Simulated mean weight change was -20.1% with tirzepatide versus -3.1% with placebo, larger than the historical semaglutide comparator; gastrointestinal adverse events led to 6% discontinuation.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">Dual incretin agonism produced the greatest synthetic weight loss to date in this program.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Pereira</LastName><ForeName>Ana</ForeName><Initials>A</Initials></Author>
+          <Author><LastName>Lindqvist</LastName><ForeName>Nils</ForeName><Initials>N</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Gastric Inhibitory Polypeptide</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Weight Loss</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Obesity</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Glucagon-Like Peptide-1 Receptor</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">tirzepatide</Keyword>
+        <Keyword MajorTopicYN="N">incretin</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData><ArticleIdList><ArticleId IdType="pubmed">91000023</ArticleId><ArticleId IdType="doi">10.9999/synth.2023.1023</ArticleId></ArticleIdList></PubmedData>
+  </PubmedArticle>
+
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">91000024</PMID>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISOAbbreviation>Synth J Diabetes</ISOAbbreviation>
+          <Title>Synthetic Journal of Diabetes</Title>
+          <JournalIssue><PubDate><Year>2021</Year><Month>Aug</Month></PubDate></JournalIssue>
+        </Journal>
+        <ArticleTitle>SGLT2 inhibition modestly lowers body weight and HbA1c in synthetic type 2 diabetes.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">A fabricated 52-week study randomized 800 simulated adults with type 2 diabetes to an SGLT2 inhibitor or placebo on top of metformin.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Simulated weight fell 2.9 kg and HbA1c fell 0.7 percentage points through urinary glucose loss; genital mycotic infections were more frequent. Weight loss was far smaller than with incretin agonists, and this trial did not assess heart-failure endpoints.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">SGLT2 inhibitors give a mild synthetic weight and glycemic benefit.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author><LastName>Kaur</LastName><ForeName>Simran</ForeName><Initials>S</Initials></Author>
+          <Author><LastName>Egwuenu</LastName><ForeName>Ada</ForeName><Initials>A</Initials></Author>
+        </AuthorList>
+      </Article>
+      <MeshHeadingList>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Sodium-Glucose Transporter 2 Inhibitors</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="Y">Diabetes Mellitus, Type 2</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Glycated Hemoglobin</DescriptorName></MeshHeading>
+        <MeshHeading><DescriptorName MajorTopicYN="N">Body Weight</DescriptorName></MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">SGLT2</Keyword>
+        <Keyword MajorTopicYN="N">glycemic control</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData><ArticleIdList><ArticleId IdType="pubmed">91000024</ArticleId><ArticleId IdType="doi">10.9999/synth.2021.1024</ArticleId></ArticleIdList></PubmedData>
+  </PubmedArticle>
+
+</PubmedArticleSet>

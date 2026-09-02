@@ -19,5 +19,10 @@ transformers>=4.44.0
 python-dotenv>=1.0.0
 tqdm>=4.66.0
 
+# --- Evaluation + generation (Component 2) ---
+# No extra dependencies: biomed_rag/eval is pure standard library, and
+# biomed_rag/generate's default ExtractiveLLM is too. `transformers` (above)
+# powers the optional TransformersLLM (`scripts/answer.py --model <hf-id>`).
+
 # --- Dev / test ---
 pytest>=8.0.0

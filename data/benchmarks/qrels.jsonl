@@ -1,0 +1,63 @@
+# Labelled retrieval benchmark for biomed_rag.eval — 56 queries over data/benchmarks/corpus.xml (24 docs).
+# One JSON object per line: query_id, query, relevant {pmid: graded_relevance} (>=1 == relevant, 2 == highly relevant),
+# optional split ("easy" default, or "hard").
+#   easy split (q01-q42): natural queries that share vocabulary with the target; also cover acronym/gene-token
+#                          cases (reward BM25) and within-cluster disambiguation (reward precise ranking / re-rank).
+#   hard split (h01-h14): pure paraphrase — near-zero lexical overlap with the target abstract. Lexical retrieval
+#                          is expected to miss these; they are the regression gate for a fine-tuned dense retriever.
+{"query_id": "q01", "query": "does interleukin-6 drive M2 macrophage polarization through STAT3?", "relevant": {"91000001": 2, "91000018": 1}}
+{"query_id": "q02", "query": "which transcription factor mediates IL-4 and IL-13 induced alternative macrophage activation?", "relevant": {"91000018": 2}}
+{"query_id": "q03", "query": "TGF-beta driven profibrotic macrophage phenotype in lung injury", "relevant": {"91000017": 2}}
+{"query_id": "q04", "query": "cytokine-directed expansion of regulatory T cells with low-dose IL-2", "relevant": {"91000015": 2}}
+{"query_id": "q05", "query": "how do commensal bacteria promote intestinal immune tolerance", "relevant": {"91000005": 2}}
+{"query_id": "q06", "query": "short-chain fatty acids induce colonic FOXP3 regulatory T cells", "relevant": {"91000005": 2, "91000015": 1}}
+{"query_id": "q07", "query": "SGLT2 inhibitors and hospitalization for heart failure", "relevant": {"91000002": 2}}
+{"query_id": "q08", "query": "do gliflozin drugs reduce hospital admissions for cardiac failure?", "relevant": {"91000002": 2}}
+{"query_id": "q09", "query": "how much weight do people lose on an SGLT2 inhibitor?", "relevant": {"91000024": 2}}
+{"query_id": "q10", "query": "does empagliflozin lower blood sugar and body weight in diabetes", "relevant": {"91000024": 2}}
+{"query_id": "q11", "query": "once-weekly semaglutide for weight loss in adults with obesity", "relevant": {"91000008": 2}}
+{"query_id": "q12", "query": "dual GIP and GLP-1 receptor agonist body weight reduction", "relevant": {"91000023": 2}}
+{"query_id": "q13", "query": "which incretin drug produced the largest reduction in body weight?", "relevant": {"91000023": 2, "91000008": 1}}
+{"query_id": "q14", "query": "appetite-suppressing peptide hormone analogue and BMI in non-diabetic adults", "relevant": {"91000008": 2, "91000023": 1}}
+{"query_id": "q15", "query": "clearance of amyloid-beta from brain interstitium during deep sleep", "relevant": {"91000003": 2}}
+{"query_id": "q16", "query": "role of aquaporin-4 water channels in perivascular waste removal", "relevant": {"91000003": 2}}
+{"query_id": "q17", "query": "antibody infusion that removes amyloid plaque and slows dementia progression", "relevant": {"91000021": 2}}
+{"query_id": "q18", "query": "how is amyloid removed from the Alzheimer brain without immunotherapy?", "relevant": {"91000003": 2, "91000021": 1}}
+{"query_id": "q19", "query": "ARIA-E imaging side effect of anti-amyloid treatment", "relevant": {"91000021": 2}}
+{"query_id": "q20", "query": "tau PET imaging tracks Braak stage and predicts cognitive decline", "relevant": {"91000006": 2}}
+{"query_id": "q21", "query": "flortaucipir uptake and future memory loss in aging", "relevant": {"91000006": 2}}
+{"query_id": "q22", "query": "iron-dependent regulated cell death of dopaminergic neurons", "relevant": {"91000009": 2}}
+{"query_id": "q23", "query": "GPX4 loss lipid peroxidation ferroptosis Parkinson", "relevant": {"91000009": 2}}
+{"query_id": "q24", "query": "adenine base editor correction of the sickle cell point mutation", "relevant": {"91000004": 2}}
+{"query_id": "q25", "query": "one-time CRISPR therapy for an inherited hemoglobin disorder", "relevant": {"91000004": 2}}
+{"query_id": "q26", "query": "anti-PD-1 antibody first-line treatment for lung cancer with high PD-L1", "relevant": {"91000007": 2}}
+{"query_id": "q27", "query": "pembrolizumab TPS 50 percent metastatic NSCLC overall survival", "relevant": {"91000007": 2}}
+{"query_id": "q28", "query": "nivolumab checkpoint blockade response in advanced melanoma", "relevant": {"91000019": 2}}
+{"query_id": "q29", "query": "third-generation EGFR kinase inhibitor for T790M lung cancer", "relevant": {"91000020": 2}}
+{"query_id": "q30", "query": "targeted therapy that is not immunotherapy for EGFR-mutant NSCLC", "relevant": {"91000020": 2}}
+{"query_id": "q31", "query": "how long do neutralizing antibodies last after an mRNA vaccine booster?", "relevant": {"91000010": 2}}
+{"query_id": "q32", "query": "cellular immunity persists after humoral response wanes post vaccination", "relevant": {"91000022": 2}}
+{"query_id": "q33", "query": "spike-specific CD8 T-cell memory durability versus antibody titre", "relevant": {"91000022": 2, "91000010": 1}}
+{"query_id": "q34", "query": "monoclonal antibody against the SARS-CoV-2 spike receptor-binding domain", "relevant": {"91000014": 2}}
+{"query_id": "q35", "query": "how does the coronavirus spike protein attach to host cells?", "relevant": {"91000014": 2}}
+{"query_id": "q36", "query": "HIF-1alpha stabilization drives tumor angiogenesis under hypoxia", "relevant": {"91000011": 2}}
+{"query_id": "q37", "query": "low oxygen in solid tumors triggers new blood vessel growth", "relevant": {"91000011": 2}}
+{"query_id": "q38", "query": "treatment options for carbapenem-resistant Klebsiella pneumoniae", "relevant": {"91000012": 2}}
+{"query_id": "q39", "query": "KPC carbapenemase and emerging colistin resistance via mgrB", "relevant": {"91000012": 2}}
+{"query_id": "q40", "query": "does running increase BDNF and the birth of new hippocampal neurons?", "relevant": {"91000013": 2}}
+{"query_id": "q41", "query": "convolutional neural network grading diabetic retinopathy from fundus photos", "relevant": {"91000016": 2}}
+{"query_id": "q42", "query": "FOXP3 regulatory T cells restrain autoimmune disease", "relevant": {"91000015": 2}}
+{"query_id": "h01", "split": "hard", "query": "why might chronically poor sleep speed up dementia by letting metabolic toxins accumulate", "relevant": {"91000003": 2}}
+{"query_id": "h02", "split": "hard", "query": "a self-destruct process in nerve cells that lipid-soluble vitamin-E-like compounds can block", "relevant": {"91000009": 2}}
+{"query_id": "h03", "split": "hard", "query": "master regulator that couples a starved blood supply to new vessel sprouting inside a malignancy", "relevant": {"91000011": 2}}
+{"query_id": "h04", "split": "hard", "query": "eating more fermentable fiber calms inflammation in the large intestine", "relevant": {"91000005": 2}}
+{"query_id": "h05", "split": "hard", "query": "can regular workouts help the adult brain form new cells and sharpen recall", "relevant": {"91000013": 2}}
+{"query_id": "h06", "split": "hard", "query": "glucose-lowering medication that keeps patients with a weak pumping heart out of the hospital", "relevant": {"91000002": 2}}
+{"query_id": "h07", "split": "hard", "query": "rewriting one letter of the genetic code to cure an inherited blood disorder", "relevant": {"91000004": 2}}
+{"query_id": "h08", "split": "hard", "query": "salvage drugs for hospital superbugs that shrug off our strongest last-line antibiotics", "relevant": {"91000012": 2}}
+{"query_id": "h09", "split": "hard", "query": "taking the brakes off a patient's own immune cells to attack an advanced chest tumor", "relevant": {"91000007": 2}}
+{"query_id": "h10", "split": "hard", "query": "infused drug that dissolves the sticky protein deposits in the brains of dementia patients", "relevant": {"91000021": 2}}
+{"query_id": "h11", "split": "hard", "query": "using machine vision on eye photographs to catch damage caused by high blood sugar", "relevant": {"91000016": 2}}
+{"query_id": "h12", "split": "hard", "query": "engineered protein that stops a respiratory virus from latching onto its cellular entry receptor", "relevant": {"91000014": 2}}
+{"query_id": "h13", "split": "hard", "query": "imaging test that maps how far a tangle-forming brain protein has spread and forecasts decline", "relevant": {"91000006": 2}}
+{"query_id": "h14", "split": "hard", "query": "twin-hormone weekly injection that outperforms earlier anti-obesity shots", "relevant": {"91000023": 2}}

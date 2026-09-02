@@ -6,4 +6,5 @@ venv/
 *.egg-info/
 .pytest_cache/
 data/cache/
+data/benchmarks/results.json
 *.log

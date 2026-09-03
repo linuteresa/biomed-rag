@@ -16,6 +16,9 @@ import json
 from typing import Sequence
 
 from .config import CONFIG
+from .trace import get_logger
+
+log = get_logger(__name__)
 
 
 # --------------------------------------------------------------------------- #
@@ -30,7 +33,10 @@ def get_dense_embed_model(model_name: str | None = None):
     from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
     name = model_name or CONFIG.embed.model
-    return HuggingFaceEmbedding(model_name=name, normalize=True)
+    log.info("loading dense embed model: %s (this may download weights)", name)
+    model = HuggingFaceEmbedding(model_name=name, normalize=True)
+    log.debug("dense embed model ready: %s", name)
+    return model
 
 
 # --------------------------------------------------------------------------- #
@@ -42,21 +48,28 @@ class SparseEncoder:
     def __init__(self):
         from pinecone_text.sparse import BM25Encoder
 
+        log.debug("SparseEncoder: constructing BM25Encoder (loads nltk data)")
         self._enc = BM25Encoder()
         self._fitted = False
 
     def fit(self, corpus: Sequence[str]) -> "SparseEncoder":
-        self._enc.fit(list(corpus))
+        corpus = list(corpus)
+        log.debug("SparseEncoder.fit: %d documents", len(corpus))
+        self._enc.fit(corpus)
         self._fitted = True
         return self
 
     def encode_documents(self, texts: Sequence[str]) -> list[dict]:
         self._require_fit()
-        return self._enc.encode_documents(list(texts))
+        texts = list(texts)
+        log.debug("SparseEncoder.encode_documents: %d texts", len(texts))
+        return self._enc.encode_documents(texts)
 
     def encode_query(self, text: str) -> dict:
         self._require_fit()
-        return self._enc.encode_queries([text])[0]
+        vec = self._enc.encode_queries([text])[0]
+        log.debug("SparseEncoder.encode_query: %d nonzero terms", len(vec.get("indices", [])))
+        return vec
 
     def save(self, path: str) -> None:
         self._require_fit()
@@ -86,6 +99,8 @@ def hybrid_scale(dense: list[float], sparse: dict, alpha: float) -> tuple[list[f
     """
     if not 0.0 <= alpha <= 1.0:
         raise ValueError("alpha must be in [0, 1]")
+    log.debug("hybrid_scale: alpha=%.2f dense_dim=%d sparse_terms=%d",
+              alpha, len(dense), len(sparse.get("indices", [])))
     scaled_dense = [v * alpha for v in dense]
     scaled_sparse = {
         "indices": sparse["indices"],

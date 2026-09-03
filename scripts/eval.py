@@ -35,6 +35,7 @@ from biomed_rag.eval import (
     load_corpus,
     validate_benchmark,
 )
+from biomed_rag.eval.metrics import legend_lines as metrics_legend
 from biomed_rag.eval.offline import LexicalReranker, OfflineHybridRetriever
 
 
@@ -94,14 +95,19 @@ def main() -> None:
 
     baseline = min(reports, key=lambda n: reports[n].aggregate[f"ndcg@{max(args.k_values)}"])
     maxk = max(args.k_values)
+    sweep_metrics = (f"recall@{maxk}", f"ndcg@{maxk}", "mrr", "map")
+
+    print("How to read the columns:")
+    for line in metrics_legend(sweep_metrics + ("precision@1",)):
+        print(f"  {line}")
+    print("  alpha ...........  1.0 = dense only, 0.0 = keyword (BM25) only\n")
+
     print("=== alpha sweep " + "=" * 50)
-    print(compare(reports,
-                  metrics=(f"recall@{maxk}", f"ndcg@{maxk}", "mrr", "map"),
-                  baseline=baseline))
+    print(compare(reports, metrics=sweep_metrics, baseline=baseline))
 
     best_name = max(reports, key=lambda n: reports[n].aggregate[f"ndcg@{maxk}"])
     best_alpha = float(best_name.split("=")[1])
-    print(f"\n[eval] best alpha by ndcg@{maxk}: {best_alpha:g}")
+    print(f"\n[eval] best alpha by ranking-quality (top {maxk}): {best_alpha:g}")
 
     if any(r.by_split for r in reports.values()):
         print("\n=== split breakdown (best alpha) " + "=" * 34)
@@ -109,7 +115,8 @@ def main() -> None:
         for s, v in sorted(bs.items()):
             print(f"  {s:<6} n={int(v['n']):<3} "
                   + "  ".join(f"recall@{k}={v[f'recall@{k}']:.3f}" for k in args.k_values)
-                  + f"  ndcg@{maxk}={v[f'ndcg@{maxk}']:.3f}  mrr={v['mrr']:.3f}")
+                  + f"  ranking-quality@{maxk}={v[f'ndcg@{maxk}']:.3f}"
+                  + f"  first-hit-score={v['mrr']:.3f}")
 
     ablation = {}
     if args.rerank:
@@ -136,9 +143,18 @@ def main() -> None:
         retr = build_live(args.artifacts_dir, args.rerank) if args.live else build_offline(corpus, args.rerank)
         pipe = AnswerPipeline.build(retriever=retr)  # extractive LLM unless a model is set
         gen_report = evaluate_generation(pipe, bench, alpha=best_alpha, rerank=args.rerank)
+        gen_labels = {
+            "faithfulness": "faithfulness ....... answer stays grounded in the sources",
+            "answer_relevancy": "answer-relevancy ... answer is on-topic for the question",
+            "citation_support": "citation-support ... answer sentences carry a source tag",
+            "hallucinated_citation": "made-up-citations .. cites a source that was not retrieved",
+            "context_precision": "context-precision . share of retrieved docs that are on target",
+            "context_recall": "context-recall .... share of on-target docs that were retrieved",
+            "abstention_rate": "abstention-rate ... share of questions answered \"not enough info\"",
+        }
         for key, val in gen_report["aggregate"].items():
-            print(f"  {key:<22} {val:.3f}")
-        print(f"  [llm backend: {gen_report['llm_backend']}]")
+            print(f"  {gen_labels.get(key, key):<58} {val:.3f}")
+        print(f"  [answer generator: {gen_report['llm_backend']}]")
 
     if args.out:
         bundle = {

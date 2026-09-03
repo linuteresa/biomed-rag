@@ -9,6 +9,10 @@ from __future__ import annotations
 
 from typing import Sequence
 
+from ..trace import get_logger
+
+log = get_logger(__name__)
+
 SYSTEM_PROMPT = (
     "You are a biomedical research assistant. Answer the question using ONLY the "
     "numbered sources provided. Cite every claim with an inline tag of the form "
@@ -47,6 +51,7 @@ def format_contexts(results: Sequence) -> tuple[str, list[str]]:
         if len(text) > _MAX_CTX_CHARS:
             text = text[:_MAX_CTX_CHARS].rsplit(" ", 1)[0] + " ..."
         lines.append(f"{head}\n{text}")
+    log.debug("format_contexts: %d passage(s) -> %d unique pmid(s)", len(lines), len(pmids))
     return "\n\n".join(lines), pmids
 
 

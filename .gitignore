@@ -8,3 +8,4 @@ venv/
 data/cache/
 data/benchmarks/results.json
 *.log
+.DS_Store

@@ -17,6 +17,9 @@ from dataclasses import dataclass, field
 from typing import Iterable
 
 from .config import CONFIG, Config
+from .trace import get_logger
+
+log = get_logger(__name__)
 
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 _YEAR_RE = re.compile(r"(\d{4})")
@@ -139,6 +142,7 @@ def parse_pubmed_xml(xml_bytes: bytes | str) -> list[dict]:
     if isinstance(xml_bytes, str):
         xml_bytes = xml_bytes.encode("utf-8")
     root = ET.fromstring(xml_bytes)
+    log.debug("parse_pubmed_xml: %d bytes, root=<%s>", len(xml_bytes), root.tag)
 
     records: list[dict] = []
     for pa in root.findall(".//PubmedArticle"):
@@ -174,6 +178,11 @@ def parse_pubmed_xml(xml_bytes: bytes | str) -> list[dict]:
                 "pmcid": ids["pmcid"],
             }
         )
+    log.debug(
+        "parse_pubmed_xml: %d PubmedArticle -> %d records",
+        len(root.findall(".//PubmedArticle")),
+        len(records),
+    )
     return records
 
 
@@ -193,6 +202,13 @@ def records_to_documents(
     docs: list[BiomedDocument] = []
     for r in records:
         pmid = r.get("pmid") or ""
+        log.debug(
+            "  doc pmid=%s year=%s sections=%d mesh=%d",
+            pmid or "?",
+            r.get("year"),
+            len(r.get("abstract_sections", [])),
+            len(r.get("mesh_terms", [])),
+        )
         metadata = _clean_metadata(
             {
                 "pmid": pmid,
@@ -217,6 +233,7 @@ def records_to_documents(
                 doc_type=doc_type,
             )
         )
+    log.debug("records_to_documents: built %d documents (doc_type=%s)", len(docs), doc_type)
     return docs
 
 
@@ -248,17 +265,23 @@ class PubMedClient:
     def _request(self, endpoint: str, params: dict, retries: int = 3) -> bytes:
         url = f"{EUTILS}/{endpoint}"
         data = urllib.parse.urlencode(params).encode("utf-8")
+        safe = {k: v for k, v in params.items() if k != "api_key"}
         last_err: Exception | None = None
         for attempt in range(retries):
             self._throttle()
+            log.debug("NCBI %s attempt %d params=%s", endpoint, attempt + 1, safe)
             try:
                 req = urllib.request.Request(
                     url, data=data, headers={"User-Agent": self.cfg.tool}
                 )
                 with urllib.request.urlopen(req, timeout=30) as resp:
-                    return resp.read()
+                    body = resp.read()
+                    log.debug("NCBI %s -> %d bytes (HTTP %s)", endpoint, len(body),
+                              getattr(resp, "status", "?"))
+                    return body
             except Exception as e:  # network / HTTP error -> backoff and retry
                 last_err = e
+                log.warning("NCBI %s attempt %d failed: %s", endpoint, attempt + 1, e)
                 time.sleep(2**attempt)
         raise RuntimeError(f"NCBI {endpoint} failed after {retries} tries: {last_err}")
 
@@ -273,9 +296,12 @@ class PubMedClient:
         import json
 
         payload = json.loads(self._request("esearch.fcgi", params))
-        return payload.get("esearchresult", {}).get("idlist", [])
+        idlist = payload.get("esearchresult", {}).get("idlist", [])
+        log.info("esearch %r (retmax=%d) -> %d pmids", query, retmax, len(idlist))
+        return idlist
 
     def efetch(self, pmids: list[str]) -> bytes:
+        log.debug("efetch: %d pmids", len(pmids))
         if not pmids:
             return b"<PubmedArticleSet/>"
         params = {
@@ -297,5 +323,6 @@ class PubMedClient:
 # --------------------------------------------------------------------------- #
 def load_records_from_file(path: str) -> list[dict]:
     """Parse a local PubMed-XML file (e.g. the bundled sample fixture)."""
+    log.debug("load_records_from_file: %s", path)
     with open(path, "rb") as fh:
         return parse_pubmed_xml(fh.read())

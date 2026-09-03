@@ -25,6 +25,9 @@ from typing import Optional, Sequence
 from ..config import CONFIG
 from ..ingest import BiomedDocument
 from ..retrieve import RetrievalResult
+from ..trace import get_logger
+
+log = get_logger(__name__)
 
 _TOKEN_RE = re.compile(r"[a-z0-9][a-z0-9\-]*")
 _STOP = frozenset(
@@ -147,6 +150,7 @@ class OfflineHybridRetriever:
         self.texts = list(texts)
         self.metadatas = [dict(m) for m in metadatas]
         toks = [tokenize(t) for t in self.texts]
+        log.info("OfflineHybridRetriever: indexing %d node(s) (BM25 + TF-IDF)", len(self.ids))
         self._bm25 = _BM25(toks)
         self._tfidf = _TfidfCosine(toks)
         self.reranker = reranker
@@ -161,6 +165,7 @@ class OfflineHybridRetriever:
     ) -> "OfflineHybridRetriever":
         from ..parse import build_nodes
 
+        log.debug("OfflineHybridRetriever.from_corpus: %d document(s)", len(corpus))
         nodes = build_nodes(corpus, **build_nodes_kwargs)
         ids, texts, metas = [], [], []
         for n in nodes:
@@ -214,6 +219,10 @@ class OfflineHybridRetriever:
         dense = _minmax(self._tfidf.scores(qtok))
         sparse = _minmax(self._bm25.scores(qtok))
         blended = [alpha * d + (1 - alpha) * s for d, s in zip(dense, sparse)]
+        log.debug(
+            "offline.retrieve: %r alpha=%.2f top_k=%d rerank=%s | query tokens=%s",
+            query, alpha, top_k, bool(rerank and self.reranker), qtok,
+        )
 
         order = sorted(range(len(self.ids)), key=lambda i: blended[i], reverse=True)
         k = max(candidate_pool, top_k) if (rerank and self.reranker) else top_k
@@ -236,7 +245,12 @@ class OfflineHybridRetriever:
                 break
 
         if rerank and self.reranker:
+            before = [r.id for r in results[:top_k]]
             results = self.reranker.rerank(query, results, top_n=top_k)
+            log.debug("offline.retrieve: reranked top-%d %s -> %s",
+                      top_k, before, [r.id for r in results])
+        log.debug("offline.retrieve -> %d result(s); top score=%.4f",
+                  len(results), results[0].score if results else 0.0)
         return results
 
 

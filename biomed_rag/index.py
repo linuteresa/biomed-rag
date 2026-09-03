@@ -17,6 +17,9 @@ from llama_index.core.schema import BaseNode
 
 from .config import CONFIG, Config
 from .embeddings import hybrid_scale
+from .trace import get_logger
+
+log = get_logger(__name__)
 
 # Pinecone caps metadata at 40 KB/vector; keep stored node text bounded.
 _MAX_TEXT_CHARS = 8000
@@ -35,6 +38,8 @@ class PineconeHybridIndex:
         from pinecone import Pinecone
 
         self.cfg = config
+        log.debug("Pinecone client init (index=%s, key set=%s)",
+                  config.pinecone.index_name, bool(config.pinecone.api_key))
         self.pc = Pinecone(api_key=config.pinecone.api_key)
         self.index_name = config.pinecone.index_name
 
@@ -46,7 +51,11 @@ class PineconeHybridIndex:
         dim = dimension or self.cfg.embed.dim
         existing = {i["name"] for i in self.pc.list_indexes()}
         if self.index_name in existing:
+            log.debug("ensure_index: %r already exists", self.index_name)
             return
+        log.info("ensure_index: creating %r dim=%d metric=%s %s/%s",
+                 self.index_name, dim, self.cfg.pinecone.metric,
+                 self.cfg.pinecone.cloud, self.cfg.pinecone.region)
         self.pc.create_index(
             name=self.index_name,
             dimension=dim,
@@ -71,9 +80,13 @@ class PineconeHybridIndex:
         """Embed nodes (dense + sparse) and upsert them into one namespace."""
         index = self._index()
         total = 0
+        log.debug("upsert_nodes: %d node(s) -> namespace %r (batch=%d)",
+                  len(nodes), namespace, batch_size)
         for start in range(0, len(nodes), batch_size):
             batch = nodes[start : start + batch_size]
             texts = [n.get_content() for n in batch]
+            log.debug("upsert batch %d..%d: embedding %d text(s)",
+                      start, start + len(batch), len(batch))
             dense = dense_embed_model.get_text_embedding_batch(texts, show_progress=False)
             sparse = sparse_encoder.encode_documents(texts)
             vectors = [
@@ -90,6 +103,7 @@ class PineconeHybridIndex:
             ]
             index.upsert(vectors=vectors, namespace=namespace)
             total += len(vectors)
+        log.info("upsert_nodes: %d vector(s) written", total)
         return total
 
     # ----------------------------------------------------------------- query
@@ -108,6 +122,8 @@ class PineconeHybridIndex:
         `metadata_filter` uses Pinecone's filter language, e.g.
             {"year": {"$gte": 2020}, "doc_type": {"$eq": "abstract"}}
         """
+        log.debug("Pinecone query: %r top_k=%d alpha=%.2f ns=%r filter=%s",
+                  query_text, top_k, alpha, namespace, metadata_filter)
         dense = dense_embed_model.get_query_embedding(query_text)
         sparse = sparse_encoder.encode_query(query_text)
         scaled_dense, scaled_sparse = hybrid_scale(dense, sparse, alpha)
@@ -131,6 +147,10 @@ class PineconeHybridIndex:
                     "metadata": {k: v for k, v in md.items() if k != "text"},
                 }
             )
+        log.debug("Pinecone query -> %d match(es)", len(out))
+        for m in out[:5]:
+            log.debug("  %s score=%.4f pmid=%s", m["id"], m["score"] or 0.0,
+                      m["metadata"].get("pmid", "?"))
         return out
 
     def stats(self) -> dict:

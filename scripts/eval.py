@@ -96,9 +96,12 @@ def main() -> None:
     baseline = min(reports, key=lambda n: reports[n].aggregate[f"ndcg@{max(args.k_values)}"])
     maxk = max(args.k_values)
     sweep_metrics = (f"recall@{maxk}", f"ndcg@{maxk}", "mrr", "map")
+    ablation_metrics = ("precision@1", f"ndcg@{maxk}", "mrr", "map")
 
+    # One legend up front covering every column that appears below: the alpha
+    # sweep uses `sweep_metrics`, the re-ranker ablation adds precision@1.
     print("How to read the columns:")
-    for line in metrics_legend(sweep_metrics + ("precision@1",)):
+    for line in metrics_legend(sweep_metrics + ablation_metrics):
         print(f"  {line}")
     print("  alpha ...........  1.0 = dense only, 0.0 = keyword (BM25) only\n")
 
@@ -127,9 +130,7 @@ def main() -> None:
         with_rr = evaluate(partial(retr.retrieve, alpha=best_alpha, rerank=True), bench,
                            k_values=args.k_values, pool=args.pool, name="rerank")
         ablation = {"no-rerank": no_rr, "rerank": with_rr}
-        print(compare(ablation,
-                      metrics=("precision@1", f"ndcg@{maxk}", "mrr", "map"),
-                      baseline="no-rerank"))
+        print(compare(ablation, metrics=ablation_metrics, baseline="no-rerank"))
         if mode == "offline":
             print("  note: offline uses a model-free LexicalReranker; the production "
                   "cross-encoder (retrieve.CrossEncoderReranker) needs a model download.")

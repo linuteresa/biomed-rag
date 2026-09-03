@@ -1,11 +1,5 @@
 """Flow tracing for the RAG pipeline.
 
-Every module calls ``log = get_logger(__name__)`` and emits ``log.debug(...)`` at
-each step of its logic. Nothing prints by default; turn it on with an env var:
-
-    BIOMED_RAG_LOG=debug  python scripts/answer.py "does IL-6 drive M2 ..."
-    BIOMED_RAG_LOG=info   python scripts/eval.py
-
 Levels (case-insensitive):
 
     debug    every step: retrieval scores, node counts, per-query metrics,
@@ -63,11 +57,7 @@ def _configure() -> None:
 
 
 def get_logger(name: str) -> logging.Logger:
-    """Return a child logger under the ``biomed_rag`` namespace.
 
-    ``name`` is normally ``__name__`` (e.g. ``biomed_rag.eval.harness``); a bare
-    name is namespaced automatically so ``get_logger("scratch")`` also works.
-    """
     _configure()
     if not name or name == "__main__":
         name = f"{_ROOT}.main"

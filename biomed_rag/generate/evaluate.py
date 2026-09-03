@@ -21,7 +21,10 @@ import re
 from collections import Counter
 from typing import Sequence
 
+from ..trace import get_logger
 from .llm import split_sentences
+
+log = get_logger(__name__)
 
 _WORD_RE = re.compile(r"[a-z0-9][a-z0-9\-]*")
 _PMID_CITE = re.compile(r"PMID:\s*([0-9]{5,9})")
@@ -111,6 +114,8 @@ def evaluate_generation(
     """Run the pipeline over every benchmark query and aggregate grounding
     metrics. Returns {aggregate, per_query, llm_backend}."""
     per_query: list[dict] = []
+    log.debug("evaluate_generation: %d query/answer pair(s), top_k=%d alpha=%s rerank=%s",
+              len(benchmark.queries), top_k, alpha, rerank)
     for q in benchmark.queries:
         ans = pipeline.answer(q.text, top_k=top_k, alpha=alpha, rerank=rerank)
         row = {
@@ -126,6 +131,9 @@ def evaluate_generation(
             "context_precision": context_precision(ans.context_pmids, q.relevant_pmids),
             "context_recall": context_recall(ans.context_pmids, q.relevant_pmids),
         }
+        log.debug("  [%s/%s] abstained=%s faithfulness=%.2f ctx-precision=%.2f ctx-recall=%.2f",
+                  q.id, q.split, row["abstained"], row["faithfulness"],
+                  row["context_precision"], row["context_recall"])
         per_query.append(row)
 
     keys = [

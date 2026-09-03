@@ -16,6 +16,10 @@ import os
 import re
 from typing import Protocol, Sequence, runtime_checkable
 
+from ..trace import get_logger
+
+log = get_logger(__name__)
+
 _SENT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9])")
 _WORD_RE = re.compile(r"[a-z0-9][a-z0-9\-]*")
 _PMID_IN_HEAD = re.compile(r"PMID:\s*([0-9?]+)")
@@ -76,7 +80,9 @@ class ExtractiveLLM:
                 denom = (len(_tokens(sent)) ** 0.5) or 1.0
                 scored.append((overlap / denom, order, sent, pmid))
 
+        log.debug("ExtractiveLLM: %d candidate sentence(s) overlap the question", len(scored))
         if not scored:
+            log.debug("ExtractiveLLM: no overlap -> abstaining")
             return (
                 "The retrieved sources do not contain enough information to "
                 "answer this question."
@@ -89,6 +95,8 @@ class ExtractiveLLM:
         for _s, _o, sent, pmid in picked:
             sent = sent.rstrip(".")
             out.append(f"{sent} [PMID:{pmid}].")
+        log.debug("ExtractiveLLM: stitched %d sentence(s), citing %s",
+                  len(picked), sorted({p for *_x, p in picked}))
         return " ".join(out)
 
     # -- helpers ---------------------------------------------------------------
@@ -138,6 +146,8 @@ class TransformersLLM:
     def _ensure(self) -> None:
         if self._model is not None:
             return
+        log.info("TransformersLLM: loading %s (local_files_only=%s)",
+                 self.name, self._local_only)
         import torch  # noqa: F401
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -181,11 +191,14 @@ def load_llm(name: str | None = None) -> LLM:
     Falls back to ExtractiveLLM if the model cannot be loaded offline."""
     name = name or os.environ.get("GEN_MODEL", "extractive")
     if name in ("extractive", "none", ""):
+        log.info("load_llm: using ExtractiveLLM (deterministic, offline)")
         return ExtractiveLLM()
     try:
+        log.debug("load_llm: trying TransformersLLM(%r)", name)
         llm = TransformersLLM(name)
         llm._ensure()
         return llm
     except Exception as e:  # no weights cached / no torch
+        log.warning("load_llm: could not load %r offline (%s); falling back to ExtractiveLLM", name, e)
         print(f"[generate] could not load {name!r} offline ({e}); using ExtractiveLLM")
         return ExtractiveLLM()

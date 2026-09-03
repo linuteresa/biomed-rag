@@ -18,7 +18,10 @@ from dataclasses import dataclass, field
 from typing import Callable, Mapping, Sequence
 
 from . import metrics as M
+from ..trace import get_logger
 from .dataset import Benchmark
+
+log = get_logger(__name__)
 
 RetrieveFn = Callable[..., Sequence]  # (query, top_k=...) -> [RetrievalResult]
 
@@ -64,24 +67,25 @@ class EvalReport:
         rows = []
         for k in self.k_values:
             rows.append(
-                f"  k={k:<3d}  "
+                f"  top {k:<3d}  "
                 f"recall={self.aggregate[f'recall@{k}']:.3f}  "
                 f"precision={self.aggregate[f'precision@{k}']:.3f}  "
-                f"f1={self.aggregate[f'f1@{k}']:.3f}  "
-                f"hit={self.aggregate[f'hit@{k}']:.3f}  "
-                f"ndcg={self.aggregate[f'ndcg@{k}']:.3f}"
+                f"f-score={self.aggregate[f'f1@{k}']:.3f}  "
+                f"any-hit={self.aggregate[f'hit@{k}']:.3f}  "
+                f"ranking-quality={self.aggregate[f'ndcg@{k}']:.3f}"
             )
         tail = (
-            f"  MRR={self.aggregate['mrr']:.3f}  "
-            f"MAP={self.aggregate['map']:.3f}  "
-            f"R-Precision={self.aggregate['r_precision']:.3f}"
+            f"  first-hit-score={self.aggregate['mrr']:.3f}  "
+            f"avg-precision={self.aggregate['map']:.3f}  "
+            f"precision-at-N={self.aggregate['r_precision']:.3f}"
         )
         out = f"{self.name}  (n={self.n_queries})\n" + "\n".join(rows) + "\n" + tail
         if len(self.by_split) > 1:
             maxk = self.k_values[-1]
             splits = "  ".join(
                 f"{s}(n={int(v['n'])}): recall@{maxk}={v[f'recall@{maxk}']:.3f} "
-                f"ndcg@{maxk}={v[f'ndcg@{maxk}']:.3f} mrr={v['mrr']:.3f}"
+                f"ranking-quality@{maxk}={v[f'ndcg@{maxk}']:.3f} "
+                f"first-hit-score={v['mrr']:.3f}"
                 for s, v in sorted(self.by_split.items())
             )
             out += "\n  by split -> " + splits
@@ -99,11 +103,16 @@ def evaluate(
     k_values = tuple(sorted(set(int(k) for k in k_values)))
     max_k = max(k_values)
     per_query: list[dict] = []
+    log.debug("evaluate(%s): %d queries, k=%s, pool=%d",
+              name or benchmark.name, len(benchmark.queries), list(k_values), pool)
 
     for q in benchmark.queries:
         results = list(retrieve_fn(q.text, top_k=max(pool, max_k)))
         ranked = _ranked_pmids(results, id_of)
         rel: Mapping[str, float] = q.relevant
+        first_hit = next((i for i, p in enumerate(ranked, 1) if p in q.relevant_pmids), None)
+        log.debug("  [%s/%s] %r -> %d nodes / %d docs; first relevant at rank %s",
+                  q.id, q.split, q.text, len(results), len(ranked), first_hit)
 
         row: dict[str, float | str | list] = {"query_id": q.id, "n_retrieved": len(ranked)}
         for k in k_values:
@@ -132,6 +141,9 @@ def evaluate(
             rows = [r for r in per_query if r["split"] == s]
             by_split[s] = {**_agg(rows), "n": float(len(rows))}
 
+    log.info("evaluate(%s): recall@%d=%.3f ranking-quality@%d=%.3f first-hit-score=%.3f",
+             name or benchmark.name, max_k, agg.get(f"recall@{max_k}", 0.0),
+             max_k, agg.get(f"ndcg@{max_k}", 0.0), agg.get("mrr", 0.0))
     return EvalReport(
         name=name or benchmark.name,
         n_queries=len(benchmark.queries),
@@ -147,22 +159,31 @@ def compare(
     metrics: Sequence[str] = ("recall@10", "ndcg@10", "mrr", "map"),
     baseline: str | None = None,
 ) -> str:
-    """Side-by-side table. If `baseline` names one of the reports, a Δ vs that
-    baseline is appended to every other row."""
-    labels = list(reports)
-    width = max((len(x) for x in labels), default=8) + 2
-    header = "run".ljust(width) + "".join(m.rjust(12) for m in metrics)
-    if baseline and baseline in reports:
-        header += "   " + "  ".join(f"Δ{m}" for m in metrics)
+    """Side-by-side table. If `baseline` names one of the reports, a
+    "change vs baseline" column is appended for every metric.
+
+    Column headers show readable metric names (`ranking-quality@10` rather than
+    `ndcg@10`); pair the table with `metrics.legend_lines(metrics)` for a key.
+    """
+    run_names = list(reports)
+    headers = [M.display_name(m) for m in metrics]
+    col = max(12, max((len(h) for h in headers), default=12) + 2)
+    width = max((len(x) for x in run_names), default=8) + 2
+    has_base = bool(baseline and baseline in reports)
+
+    header = "run".ljust(width) + "".join(h.rjust(col) for h in headers)
+    if has_base:
+        # "Δ" columns show the change versus the baseline run.
+        header += "   " + "".join(f"Δ{h}".rjust(col) for h in headers)
     lines = [header, "-" * len(header)]
-    base = reports[baseline].aggregate if (baseline and baseline in reports) else None
-    for label, rep in reports.items():
-        cells = "".join(f"{rep.aggregate.get(m, 0.0):12.3f}" for m in metrics)
-        line = label.ljust(width) + cells
+    base = reports[baseline].aggregate if has_base else None
+    for name, rep in reports.items():
+        cells = "".join(f"{rep.aggregate.get(m, 0.0):{col}.3f}" for m in metrics)
+        line = name.ljust(width) + cells
         if base is not None:
-            deltas = "  ".join(
-                f"{rep.aggregate.get(m, 0.0) - base.get(m, 0.0):+7.3f}" for m in metrics
+            line += "   " + "".join(
+                f"{rep.aggregate.get(m, 0.0) - base.get(m, 0.0):+{col}.3f}"
+                for m in metrics
             )
-            line += "   " + deltas
         lines.append(line)
     return "\n".join(lines)

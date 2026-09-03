@@ -24,6 +24,9 @@ from llama_index.core.schema import BaseNode, TextNode
 
 from .config import CONFIG
 from .ingest import BiomedDocument
+from .trace import get_logger
+
+log = get_logger(__name__)
 
 # Keep identifiers and long lists out of the embedded/LLM text, but let the
 # semantically useful fields (title, journal, year, MeSH, section) enrich it.
@@ -92,18 +95,25 @@ def build_nodes(
 
     nodes: list[BaseNode] = []
     for d in docs:
+        before = len(nodes)
         if d.doc_type == CONFIG.DOC_TYPE_FULLTEXT:
             # Long body: hierarchical parent/child nodes for auto-merging.
+            strategy = "hierarchical(fulltext)"
             doc = to_llama_documents([d])[0]
             nodes.extend(hierarchical.get_nodes_from_documents([doc]))
         elif len(d.abstract_sections) > 1:
             # Structured abstract: section-aware nodes, each split if long.
+            strategy = "section-aware"
             section_docs = _section_documents(d)
             nodes.extend(abstract_splitter.get_nodes_from_documents(section_docs))
         else:
             # Unstructured abstract / short doc: plain sentence splitting.
+            strategy = "plain-sentence"
             doc = to_llama_documents([d])[0]
             nodes.extend(abstract_splitter.get_nodes_from_documents([doc]))
+        log.debug("build_nodes: %s via %s -> %d node(s)",
+                  d.doc_id, strategy, len(nodes) - before)
+    log.info("build_nodes: %d document(s) -> %d node(s)", len(docs), len(nodes))
     return nodes
 
 

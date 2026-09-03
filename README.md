@@ -15,7 +15,7 @@ data/sample/*.xml ──┘   (stdlib parse)   (section-aware)     (dense + BM25
                                                                                       ▼
               cited answer  ◄─── generate ◄─── HybridRetriever (alpha-weighted, +rerank)
                     │                                     │
-              grounding metrics                     eval harness ──► Recall/nDCG/MRR/MAP
+              grounding metrics                     eval harness ──► recall / ranking-quality / first-hit-score
               (faithfulness, …)                     (labelled benchmark, easy/hard split)
 ```
 
@@ -38,7 +38,7 @@ data/sample/*.xml ──┘   (stdlib parse)   (section-aware)     (dense + BM25
 
 | Module | Responsibility |
 |---|---|
-| `biomed_rag/eval/metrics.py` | Pure-stdlib IR metrics: `precision/recall/f1/hit/ndcg@k`, `mrr`, `map`, `r_precision` (graded relevance, hand-verifiable). |
+| `biomed_rag/eval/metrics.py` | Pure-stdlib retrieval metrics: precision, recall, f-score, any-hit, ranking-quality (nDCG), first-hit-score (MRR), avg-precision (MAP), precision-at-N — graded relevance, hand-verifiable. `display_name()` / `LEGEND` give the readable labels used in output. |
 | `biomed_rag/eval/dataset.py` | Loads `qrels.jsonl` (labels keyed by **PMID**, not node id) + benchmark corpus; validates every label resolves. |
 | `biomed_rag/eval/offline.py` | `OfflineHybridRetriever` — Okapi BM25 + TF-IDF-cosine blended by `alpha`, **same `retrieve()` contract as Pinecone**. `LexicalReranker` stands in for the cross-encoder. |
 | `biomed_rag/eval/harness.py` | `evaluate(retrieve_fn, benchmark)` → `EvalReport` (aggregate + per-query + per-split); `compare()` renders sweeps/ablations with Δ-vs-baseline. |
@@ -100,10 +100,14 @@ abstractive (vs extractive) answers.
 
 `python scripts/eval.py --rerank --generation` (offline BM25 + TF-IDF baseline):
 
-| Split | Recall@5 | Recall@10 | nDCG@10 | MRR |
+| Split | recall@5 | recall@10 | ranking-quality@10 | first-hit-score |
 |---|---|---|---|---|
 | easy (in-vocabulary) | 1.00 | 1.00 | 0.98 | 0.98 |
 | hard (paraphrase) | 0.50 | 0.50 | 0.38 | 0.34 |
+
+`ranking-quality` is nDCG (0–1, how close the order is to ideal);
+`first-hit-score` is mean reciprocal rank (1 / rank of the first correct hit).
+`scripts/eval.py` prints a one-line key for every column.
 
 Grounded generation (offline `ExtractiveLLM`): faithfulness **1.00**, citation
 support **1.00**, hallucinated-citation rate **0.00**, context-recall **0.83**,

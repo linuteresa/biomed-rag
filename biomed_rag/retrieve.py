@@ -14,6 +14,9 @@ from typing import Optional
 from .config import CONFIG, Config
 from .embeddings import SparseEncoder, get_dense_embed_model
 from .index import PineconeHybridIndex, namespace_for
+from .trace import get_logger
+
+log = get_logger(__name__)
 
 
 @dataclass
@@ -32,6 +35,7 @@ class CrossEncoderReranker:
     def __init__(self, model_name: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"):
         from sentence_transformers import CrossEncoder
 
+        log.info("loading cross-encoder reranker: %s (may download weights)", model_name)
         self.model = CrossEncoder(model_name)
 
     def rerank(
@@ -39,6 +43,8 @@ class CrossEncoderReranker:
     ) -> list[RetrievalResult]:
         if not results:
             return results
+        log.debug("rerank: scoring %d (query, passage) pair(s), keep top %d",
+                  len(results), top_n)
         pairs = [(query, r.text) for r in results]
         scores = self.model.predict(pairs)
         reranked = sorted(
@@ -72,6 +78,7 @@ def build_metadata_filter(
         f["mesh_terms"] = {"$in": [mesh]}
     if doc_type:
         f["doc_type"] = {"$eq": doc_type}
+    log.debug("build_metadata_filter -> %s", f or None)
     return f or None
 
 
@@ -100,6 +107,8 @@ class HybridRetriever:
     ) -> list[RetrievalResult]:
         # When re-ranking, retrieve a wider candidate pool then trim to top_k.
         k = max(candidate_pool, top_k) if (rerank and self.reranker) else top_k
+        log.debug("HybridRetriever.retrieve: %r top_k=%d alpha=%.2f rerank=%s pool=%d",
+                  query, top_k, alpha, bool(rerank and self.reranker), k)
         raw = self.index.query(
             query_text=query,
             dense_embed_model=self.dense,
@@ -114,6 +123,7 @@ class HybridRetriever:
         ]
         if rerank and self.reranker:
             results = self.reranker.rerank(query, results, top_n=top_k)
+        log.debug("HybridRetriever.retrieve -> %d result(s)", len(results))
         return results
 
 
@@ -126,6 +136,7 @@ def build_retriever(
 
     Expects `bm25.json` (written by scripts/ingest.py) in `artifacts_dir`.
     """
+    log.debug("build_retriever: artifacts_dir=%s with_reranker=%s", artifacts_dir, with_reranker)
     dense = get_dense_embed_model(config.embed.model)
     sparse = SparseEncoder()
     bm25_path = os.path.join(artifacts_dir, "bm25.json")
@@ -133,7 +144,9 @@ def build_retriever(
         raise FileNotFoundError(
             f"Fitted BM25 params not found at {bm25_path}. Run scripts/ingest.py first."
         )
+    log.debug("build_retriever: loading fitted BM25 from %s", bm25_path)
     sparse.load(bm25_path)
     index = PineconeHybridIndex(config)
     reranker = CrossEncoderReranker() if with_reranker else None
+    log.debug("build_retriever: ready (reranker=%s)", bool(reranker))
     return HybridRetriever(index, dense, sparse, reranker)

@@ -20,6 +20,9 @@ from dataclasses import dataclass, field
 from typing import Sequence
 
 from ..ingest import BiomedDocument, load_records_from_file, records_to_documents
+from ..trace import get_logger
+
+log = get_logger(__name__)
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _BENCH_DIR = os.path.normpath(os.path.join(_HERE, "..", "..", "data", "benchmarks"))
@@ -79,6 +82,10 @@ def load_benchmark(path: str = DEFAULT_QRELS, name: str | None = None) -> Benchm
                 raise ValueError(f"{path}:{lineno}: query {qid!r} has no relevant docs")
             split = str(row.get("split") or "easy").strip().lower()
             queries.append(Query(id=qid, text=text, relevant=rel, split=split))
+    splits: dict[str, int] = {}
+    for q in queries:
+        splits[q.split] = splits.get(q.split, 0) + 1
+    log.debug("load_benchmark: %s -> %d queries %s", path, len(queries), splits)
     return Benchmark(queries=queries, name=name or os.path.basename(path))
 
 
@@ -87,7 +94,9 @@ def load_corpus(
 ) -> list[BiomedDocument]:
     """Parse the benchmark PubMed-XML corpus into BiomedDocuments."""
     records = load_records_from_file(path)
-    return records_to_documents(records, doc_type=doc_type)
+    docs = records_to_documents(records, doc_type=doc_type)
+    log.debug("load_corpus: %s -> %d documents", path, len(docs))
+    return docs
 
 
 def validate_benchmark(
@@ -109,4 +118,5 @@ def validate_benchmark(
             f"note: {len(never_relevant)} corpus doc(s) are relevant to no query "
             f"(fine as distractors): {sorted(p for p in never_relevant if p)}"
         )
+    log.debug("validate_benchmark: %d problem line(s)", len(problems))
     return problems

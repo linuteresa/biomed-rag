@@ -54,7 +54,7 @@ def hit_at_k(ranked: Sequence[str], relevance: Relevance, k: int) -> float:
 
 
 def reciprocal_rank(ranked: Sequence[str], relevance: Relevance) -> float:
-    """"First-hit score": how near the top the first relevant document lands.
+    """First-hit score: how near the top the first relevant document lands.
 
     Score is 1 / (rank of the first relevant document), or 0 if none is found —
     so first place scores 1.00, second place 0.50, third 0.33. The mean of this
@@ -68,7 +68,7 @@ def reciprocal_rank(ranked: Sequence[str], relevance: Relevance) -> float:
 
 
 def average_precision(ranked: Sequence[str], relevance: Relevance) -> float:
-    """"Average precision": running precision, sampled each time a relevant
+    """Average precision: running precision, sampled each time a relevant
     document is hit, then averaged over all relevant documents.
 
     It rewards finding every relevant document *and* ranking them high. The
@@ -107,7 +107,7 @@ def dcg_at_k(ranked: Sequence[str], relevance: Relevance, k: int) -> float:
 
 
 def ndcg_at_k(ranked: Sequence[str], relevance: Relevance, k: int) -> float:
-    """"Ranking quality" in the top k, on a 0..1 scale.
+    """Ranking quality in the top k, on a 0..1 scale.
 
     Adds up each relevant document's gain, but discounts it the further down
     the list it sits, then divides by the score of the best possible ordering.

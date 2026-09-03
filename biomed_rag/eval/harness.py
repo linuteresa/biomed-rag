@@ -163,7 +163,7 @@ def compare(
     "change vs baseline" column is appended for every metric.
 
     Column headers show readable metric names (`ranking-quality@10` rather than
-    `ndcg@10`); pair the table with `metrics.legend_lines(metrics)` for a key.
+    `ndcg@10`); pair the table with `M.legend_lines(metrics)` for a key.
     """
     run_names = list(reports)
     headers = [M.display_name(m) for m in metrics]

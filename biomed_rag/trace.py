@@ -39,6 +39,11 @@ def _configure() -> None:
         return
     _configured = True
 
+    root = logging.getLogger(_ROOT)
+    if root.handlers:
+
+        return
+
     level_name = os.environ.get("BIOMED_RAG_LOG", "warning").strip().upper()
     level = getattr(logging, level_name, logging.WARNING)
 
@@ -50,11 +55,6 @@ def _configure() -> None:
             logging.Formatter("%(levelname)-5s %(name)s | %(message)s")
         )
 
-    root = logging.getLogger(_ROOT)
-    if root.handlers:
-        # A host application has already configured the `biomed_rag` logger;
-        # leave its handlers, level, and propagation untouched.
-        return
     root.addHandler(handler)
     if root.level == logging.NOTSET:
         root.setLevel(level)
@@ -62,6 +62,7 @@ def _configure() -> None:
 
 
 def get_logger(name: str) -> logging.Logger:
+
     _configure()
     if not name or name == "__main__":
         name = f"{_ROOT}.main"

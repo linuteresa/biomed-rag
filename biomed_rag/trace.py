@@ -52,7 +52,8 @@ def _configure() -> None:
 
     root = logging.getLogger(_ROOT)
     root.setLevel(level)
-    root.handlers[:] = [handler]
+    if not root.handlers:
+        root.addHandler(handler)
     root.propagate = False
 
 

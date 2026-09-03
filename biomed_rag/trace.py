@@ -51,17 +51,20 @@ def _configure() -> None:
         )
 
     root = logging.getLogger(_ROOT)
-    root.setLevel(level)
-    if not root.handlers:
-        root.addHandler(handler)
+    if root.handlers:
+        # A host application has already configured the `biomed_rag` logger;
+        # leave its handlers, level, and propagation untouched.
+        return
+    root.addHandler(handler)
+    if root.level == logging.NOTSET:
+        root.setLevel(level)
     root.propagate = False
 
 
 def get_logger(name: str) -> logging.Logger:
-
     _configure()
     if not name or name == "__main__":
         name = f"{_ROOT}.main"
-    elif not name.startswith(_ROOT):
+    elif name != _ROOT and not name.startswith(f"{_ROOT}."):
         name = f"{_ROOT}.{name}"
     return logging.getLogger(name)
